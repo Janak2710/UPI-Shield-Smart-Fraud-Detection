@@ -1,0 +1,25 @@
+{
+    "validation_results": {
+        "Logistic Regression (Balanced)": {
+            "validation_pr_auc": 0.11194486461409336
+        },
+        "Logistic Regression (Unbalanced)": {
+            "validation_pr_auc": 0.11231931360322323
+        },
+        "Random Forest": {
+            "validation_pr_auc": 0.07139879528642012
+        }
+    },
+    "final_test_results": {
+        "selected_model": "Logistic Regression (Unbalanced)",
+        "selected_threshold": 0.04726141196391432,
+        "validation_recall_target": 0.5,
+        "test_accuracy": 0.802,
+        "test_precision": 0.10304054054054054,
+        "test_recall": 0.49193548387096775,
+        "test_f1_score": 0.17039106145251395,
+        "test_roc_auc": 0.7259634797433712,
+        "test_pr_auc": 0.1096193259287345
+    },
+    "dataset_note": "The dataset is synthetically generated. Results do not represent real banking performance."
+}
