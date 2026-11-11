@@ -79,3 +79,15 @@ py -m streamlit run app.py
 ## Project Type
 
 BCA Major Project – Machine Learning and Fraud Detection.
+
+## Dataset Source and Attribution
+
+The synthetic UPI transaction dataset and original risk-signal design were sourced from:
+
+Original GitHub Repository:
+https://github.com/iamgokulchowdary/UPI-Fraud-Detection-System
+The original project's README explains that the fraud labels were generated using a probabilistic scoring method based on eight risk signals.
+
+UPI Shield builds on this dataset to evaluate machine learning models, select a validation-based decision threshold, and create a Streamlit application that flags suspicious transactions for review.
+
+Credit for the original dataset and risk-signal design belongs to the original project creator.
