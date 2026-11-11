@@ -366,8 +366,11 @@ elif page == "Analyze Transaction":
 
             avg_txn_value = st.number_input(
                 "Average Transaction Value (₹)",
-                min_value=0.0,
-                value=2000.0
+                min_value=50.0,
+                max_value=5000.0,
+                value=2000.0,
+                step=50.0,
+                help="Restricted to ₹50–₹5,000 for this academic demo; observed training data ranged from approximately ₹52 to ₹4,539."
             )
 
             loyalty_score = st.slider(
@@ -402,6 +405,12 @@ elif page == "Analyze Transaction":
                 amount_deviation = abs(amount - avg_txn_value) / avg_txn_value
             else:
                 amount_deviation = 0.0
+
+            if amount_deviation > 11.36:
+                st.warning(
+                    "This transaction's deviation score is beyond the observed training range. "
+                    "The model's output may be unreliable for this input."
+                )
 
             st.number_input(
                 "Amount Deviation Score (Auto-calculated)",
@@ -583,8 +592,8 @@ elif page == "About Project":
     st.write(
     "The application uses a trained machine learning pipeline "
     "to analyze transaction details and generate a model risk score. "
-    "Based on this score, the system classifies transactions as "
-    "potentially fraudulent or genuine."
+    "The system flags transactions for review when the model risk score "
+    "exceeds the selected threshold. A flagged transaction is not confirmed fraud."
     )
 
     st.markdown("### Important Dataset Disclaimer")
@@ -595,6 +604,21 @@ elif page == "About Project":
         "real customer information, or live UPI transaction data. "
         "Predictions are experimental and must not be used for real "
         "financial decisions."
+    )
+
+    st.markdown("### Important Limitations")
+
+    st.markdown(
+        "- The dataset contains synthetic transactions; the original label-generation "
+        "procedure has not been independently verified.\n"
+        "- Risk-related features may overlap with rules used to generate the synthetic "
+        "fraud labels, so measured performance may not generalize.\n"
+        "- The held-out test set contains only 124 fraud examples, so fraud-class "
+        "performance estimates have sampling uncertainty.\n"
+        "- The model produces false alarms and misses some fraudulent transactions.\n"
+        "- Model risk scores are not calibrated real-world fraud probabilities.\n"
+        "- Inputs outside the training distribution may be unreliable.\n"
+        "- This tool is an academic demonstration, not a real banking security system."
     )
 
     st.markdown("### Project Technology")
